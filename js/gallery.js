@@ -87,12 +87,18 @@ photoList.addEventListener("click", handleClick)
 
 function handleClick(event) {
      event.preventDefault();
-    
-const instance = basicLightbox.create(`
-    <img src="${images.original}" width="1112" height="640" alt="${images.description}" />
+    if (event.target === event.currentTarget) {
+        return;
+    }
+    const photos = event.target.closest(".gallery-item");
+    const way = photos.dataset.original;
+    const image = images.find(image => image.original === +way);
+    const instance = basicLightbox.create(`
+    <img src="${image.way}" width="1112" height="640" alt="${image.description}">
 `)
     
     instance.show();
+    console.log(way);
 }
 
 
