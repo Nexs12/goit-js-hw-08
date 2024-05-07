@@ -90,15 +90,13 @@ function handleClick(event) {
     if (event.target === event.currentTarget) {
         return;
     }
-    const photos = event.target.closest(".gallery-item");
-    const way = photos.dataset.original;
-    const image = images.find(image => image.original === +way);
+    const photos = event.target.closest(".gallery-image");
+
     const instance = basicLightbox.create(`
-    <img src="${image.way}" width="1112" height="640" alt="${image.description}">
+    <img src="${photos.dataset.source}" width="1112" height="640" alt="${photos.alt}">
 `)
     
     instance.show();
-    console.log(way);
 }
 
 
